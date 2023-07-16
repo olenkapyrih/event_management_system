@@ -1,4 +1,4 @@
-# event_management_system
+# event management system
 
 ### create and activate virtual environment
 ```shell
