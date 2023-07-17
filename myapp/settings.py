@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = [os.getenv('HOSTS')]
+ALLOWED_HOSTS = [os.getenv('HOST')]
 
 
 # Application definition

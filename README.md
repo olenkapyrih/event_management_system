@@ -11,7 +11,7 @@
     pip install -r requirements.txt
 ```
 
-### create .env file in the root of your directory
+### create .env file in the root of your directory and past there data from .env.sample, changing fields if needed
 
 ### run project*
 ```shell
