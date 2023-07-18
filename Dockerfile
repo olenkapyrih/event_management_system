@@ -12,6 +12,6 @@ RUN pip install -r requirements.txt
 
 COPY . /app
 
-# EXPOSE 8000
+EXPOSE 8000
 
-CMD ["uvicorn", "myapp.asgi:application","--host", "127.0.0.1", "--port", "8000", "--reload"]
+CMD ["python", "manage.py"]

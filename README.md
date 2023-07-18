@@ -1,9 +1,15 @@
 # event management system
 
-### create and activate virtual environment
+### create and activate virtual environment (for windows)
 ```shell
   python -m venv venv
-  venv\Scripts\activate
+  venv\Scripts\activate  
+```
+
+### create and activate virtual environment (for linux)
+```shell
+  python3 -m venv venv
+  source venv/bin/activate
 ```
 
 ### install all dependencies
@@ -15,11 +21,15 @@
 
 ### run project*
 ```shell
-  uvicorn myapp.asgi:application
+  python manage.py
 ```
 
-### run project with auto restart enabled
+### build and launch application within Docker (for windows)
 ```shell
-  hupper -m uvicorn myapp.asgi:application
+  docker-compose up --build
 ```
 
+### build and launch application within Docker (for linux)
+```shell
+  sudo docker-compose up --build
+```

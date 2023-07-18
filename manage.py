@@ -1,6 +1,10 @@
 import os
 import sys
 import uvicorn
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 def main():
     """Run administrative tasks."""
@@ -18,4 +22,6 @@ def main():
 
 if __name__ == "__main__":
     asgi_app_path = "myapp.asgi:application"
-    uvicorn.run(asgi_app_path, host="127.0.0.1", port=8000, reload=True)
+    host = os.getenv('HOST')
+    port = int(os.getenv('PORTS'))
+    uvicorn.run(asgi_app_path, host=host, port=port, reload=True)
