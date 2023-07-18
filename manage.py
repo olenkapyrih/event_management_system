@@ -23,5 +23,5 @@ def main():
 if __name__ == "__main__":
     asgi_app_path = "myapp.asgi:application"
     host = os.getenv('HOST')
-    port = int(os.getenv('PORTS'))
+    port = int(os.getenv('PORT'))
     uvicorn.run(asgi_app_path, host=host, port=port, reload=True)
