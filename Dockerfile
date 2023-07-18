@@ -12,6 +12,7 @@ RUN pip install -r requirements.txt
 
 COPY . /app
 
-EXPOSE 8000
+ARG PORT
+EXPOSE ${PORT}
 
 CMD ["python", "manage.py"]
