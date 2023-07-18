@@ -1,7 +1,9 @@
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
 import os
 import sys
+import uvicorn
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def main():
@@ -18,5 +20,8 @@ def main():
     execute_from_command_line(sys.argv)
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    asgi_app_path = "myapp.asgi:application"
+    host = os.getenv('HOST')
+    port = int(os.getenv('PORT'))
+    uvicorn.run(asgi_app_path, host=host, port=port, reload=True)
