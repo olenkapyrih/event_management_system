@@ -1,9 +1,7 @@
 import os
 import sys
 import uvicorn
-from dotenv import load_dotenv
-
-load_dotenv()
+from config import settings
 
 
 def main():
@@ -22,6 +20,6 @@ def main():
 
 if __name__ == "__main__":
     asgi_app_path = "myapp.asgi:application"
-    host = os.getenv('HOST')
-    port = int(os.getenv('PORT'))
+    host = settings.HOST
+    port = settings.PORT
     uvicorn.run(asgi_app_path, host=host, port=port, reload=True)

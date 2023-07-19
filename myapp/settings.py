@@ -1,11 +1,8 @@
-from dotenv import load_dotenv
 import os
 from pathlib import Path
-# Load environment variables from .env file
-load_dotenv()
-
+from config import settings
 # Set the SECRET_KEY
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = settings.SECRET_KEY
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -18,10 +15,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
+DEBUG = settings.DEBUG
 
-ALLOWED_HOSTS = [os.getenv('HOST')]
-CORS_ALLOW_ALL_ORIGINS = os.getenv('CORS_ALLOW_ALL_ORIGINS')
+ALLOWED_HOSTS = [settings.HOST]
+CORS_ALLOW_ALL_ORIGINS = settings.CORS_ALLOW_ALL_ORIGINS
 
 # Application definition
 
@@ -74,19 +71,19 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB'),
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': os.getenv('POSTGRES_HOST'),
-        'PORT': int(os.getenv('POSTGRES_PORT')),
+        'NAME': settings.POSTGRES_DB,
+        'USER': settings.POSTGRES_USER,
+        'PASSWORD': settings.POSTGRES_PASSWORD,
+        'HOST': settings.POSTGRES_HOST,
+        'PORT': settings.POSTGRES_PORT,
     }
 }
 
 CASHES = {
     'default': {
         'ENGINE': 'aioredis.cache.RedisCache',
-        'HOST': os.getenv('REDIS_HOST'),
-        'PORT': int(os.getenv('REDIS_PORT'))
+        'HOST': settings.REDIS_HOST,
+        'PORT': settings.REDIS_PORT,
 
     }
 }
