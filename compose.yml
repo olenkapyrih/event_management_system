@@ -22,6 +22,17 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "${PGADMIN_PORT}:${PGADMIN_PORT}"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    depends_on:
+      - db
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
 
   redis:
     image: redis:latest
@@ -31,5 +42,6 @@ services:
 volumes:
   postgres_data:
   redis_data:
+  pgadmin-data:
 
 
