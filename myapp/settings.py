@@ -1,11 +1,7 @@
-from dotenv import load_dotenv
-import os
 from pathlib import Path
-# Load environment variables from .env file
-load_dotenv()
-
+from config import settings
 # Set the SECRET_KEY
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = settings.SECRET_KEY
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -18,10 +14,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
+DEBUG = settings.DEBUG
 
-ALLOWED_HOSTS = [os.getenv('HOST')]
-CORS_ALLOW_ALL_ORIGINS = os.getenv('CORS_ALLOW_ALL_ORIGINS')
+ALLOWED_HOSTS = ["*"]
+CORS_ALLOW_ALL_ORIGINS = settings.CORS_ALLOW_ALL_ORIGINS
 
 # Application definition
 
@@ -45,6 +41,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'myapp.urls'
 
@@ -72,11 +69,23 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': settings.POSTGRES_DB,
+        'USER': settings.POSTGRES_USER,
+        'PASSWORD': settings.POSTGRES_PASSWORD,
+        'HOST': settings.POSTGRES_HOST,
+        'PORT': settings.POSTGRES_PORT,
     }
 }
 
+CASHES = {
+    'default': {
+        'ENGINE': 'django_redis.cache.RedisCache',
+        'HOST': settings.REDIS_HOST,
+        'PORT': settings.REDIS_PORT,
+
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
