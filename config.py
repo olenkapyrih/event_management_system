@@ -19,7 +19,13 @@ class Settings(BaseSettings):
     REDIS_HOST: str
     REDIS_PORT: int
 
+    PGADMIN_DEFAULT_EMAIL: str
+    PGADMIN_DEFAULT_PASSWORD: str
+    PGADMIN_PORT: int
+
     model_config = SettingsConfigDict(env_file=".env")
 
 
 settings = Settings()
+
+
