@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 from config import settings
 # Set the SECRET_KEY
@@ -17,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = settings.DEBUG
 
-ALLOWED_HOSTS = [settings.HOST]
+ALLOWED_HOSTS = ["*"]
 CORS_ALLOW_ALL_ORIGINS = settings.CORS_ALLOW_ALL_ORIGINS
 
 # Application definition
@@ -81,7 +80,7 @@ DATABASES = {
 
 CASHES = {
     'default': {
-        'ENGINE': 'aioredis.cache.RedisCache',
+        'ENGINE': 'django_redis.cache.RedisCache',
         'HOST': settings.REDIS_HOST,
         'PORT': settings.REDIS_PORT,
 
